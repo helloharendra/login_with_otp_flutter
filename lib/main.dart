@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_with_otp_flutter/otp.dart';
 import 'package:login_with_otp_flutter/phone.dart';
 
 void main() {
@@ -15,6 +16,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MyPhone());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'phone',
+      routes: {
+        'phone': (context) => const MyPhone(),
+        'otp': (context) => const MyOtp()
+      },
+    );
   }
 }

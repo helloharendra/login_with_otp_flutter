@@ -109,7 +109,8 @@ class _MyOtpState extends State<MyOtp> {
                 children: [
                   TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, 'phone', (route) => false);
                       },
                       child: const Text(
                         'Edit Phone Number ?',
