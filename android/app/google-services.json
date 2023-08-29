@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "178729986515",
+    "project_id": "login-with-otp-41886",
+    "storage_bucket": "login-with-otp-41886.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178729986515:android:71ea3ff5997b4179756726",
+        "android_client_info": {
+          "package_name": "com.example.login_with_otp_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178729986515-dlijtsl7aon1nfmvapr2q02qq2c70g5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFGih_ZCEjp4onXtBpnUkAT5K-v6AvIy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178729986515-dlijtsl7aon1nfmvapr2q02qq2c70g5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

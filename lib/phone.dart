@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_with_otp_flutter/otp.dart';
@@ -11,6 +12,7 @@ class MyPhone extends StatefulWidget {
 
 class _MyPhoneState extends State<MyPhone> {
   TextEditingController countryCode = TextEditingController();
+  var phone = "";
   @override
   void initState() {
     // TODO: implement initState
@@ -20,9 +22,7 @@ class _MyPhoneState extends State<MyPhone> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-
-    Scaffold(
+    return Scaffold(
       body: Container(
         margin: const EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
@@ -81,9 +81,14 @@ class _MyPhoneState extends State<MyPhone> {
                           style: TextStyle(fontSize: 30, color: Colors.grey),
                         ),
                       ),
-                      const Expanded(
+                      Expanded(
                         child: TextField(
-                          decoration: InputDecoration(border: InputBorder.none),
+                          keyboardType: TextInputType.phone,
+                          onChanged: (value) {
+                            phone = value;
+                          },
+                          decoration: const InputDecoration(
+                              border: InputBorder.none, hintText: 'Phone'),
                         ),
                       )
                     ],
@@ -112,9 +117,15 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyOtp()));
+                  onPressed: () async {
+                    await FirebaseAuth.instance.verifyPhoneNumber(
+                      phoneNumber: '${countryCode.text + phone}',
+                      verificationCompleted:
+                          (PhoneAuthCredential credential) {},
+                      verificationFailed: (FirebaseAuthException e) {},
+                      codeSent: (String verificationId, int? resendToken) {},
+                      codeAutoRetrievalTimeout: (String verificationId) {},
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                       primary: const Color.fromARGB(255, 139, 14, 241),
@@ -128,6 +139,5 @@ class _MyPhoneState extends State<MyPhone> {
         ),
       ),
     );
-  
   }
 }
